@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package javaasgm;
 
-/**
- *
- * @author user
- */
 public class Sales_Manager extends javax.swing.JFrame {
 
     /**
@@ -46,6 +38,11 @@ public class Sales_Manager extends javax.swing.JFrame {
         });
 
         btnRequistion.setText("Create Requistion");
+        btnRequistion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequistionActionPerformed(evt);
+            }
+        });
 
         btnSalesEntry.setText("Sales Entry");
         btnSalesEntry.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +52,11 @@ public class Sales_Manager extends javax.swing.JFrame {
         });
 
         btnReport.setText("View Report");
+        btnReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportActionPerformed(evt);
+            }
+        });
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +107,8 @@ public class Sales_Manager extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
+        getAccessibleContext().setAccessibleName("Sales_Manager");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -113,12 +117,32 @@ public class Sales_Manager extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
-        // TODO add your handling code here:
+        InventoryFrame inventoryFrame = new InventoryFrame();
+        inventoryFrame.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnSalesEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalesEntryActionPerformed
-        // TODO add your handling code here:
+        Sales_entry salesEntryFrame = new Sales_entry();
+        salesEntryFrame.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_btnSalesEntryActionPerformed
+
+    private void btnRequistionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequistionActionPerformed
+        Create_Requisition createRequisitionFrame = new Create_Requisition();
+        createRequisitionFrame.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnRequistionActionPerformed
+
+    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
+        View_report viewReportFrame = new View_report();
+        viewReportFrame.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnReportActionPerformed
 
     /**
      * @param args the command line arguments

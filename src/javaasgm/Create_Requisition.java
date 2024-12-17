@@ -50,6 +50,11 @@ public class Create_Requisition extends javax.swing.JFrame {
         jTextField3.setText("jTextField3");
 
         jButton1.setText("Home");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHome(evt);
+            }
+        });
 
         jButton2.setText("CREATE");
 
@@ -103,8 +108,17 @@ public class Create_Requisition extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
+        getAccessibleContext().setAccessibleName("Create_Requisition");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHome(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHome
+        Sales_Manager salesManagerFrame = new Sales_Manager();
+        salesManagerFrame.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnHome
 
     /**
      * @param args the command line arguments

@@ -49,6 +49,11 @@ public class View_report extends javax.swing.JFrame {
         jButton1.setText("Search");
 
         jButton2.setText("Home");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHome(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,12 +118,19 @@ public class View_report extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
+        getAccessibleContext().setAccessibleName("View_report");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnHome(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHome
+        Sales_Manager salesManagerFrame = new Sales_Manager();
+        salesManagerFrame.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_btnHome
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
