@@ -43,10 +43,25 @@ public class View_report extends javax.swing.JFrame {
         jLabel2.setText("End Date:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbStartDate(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEndDate(evt);
+            }
+        });
 
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch(evt);
+            }
+        });
 
         jButton2.setText("Home");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +82,7 @@ public class View_report extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getAccessibleContext().setAccessibleName("TableReport");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,6 +134,10 @@ public class View_report extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
+        jComboBox1.getAccessibleContext().setAccessibleName("cbStartDate");
+        jComboBox2.getAccessibleContext().setAccessibleName("cbEndDate");
+        jButton1.getAccessibleContext().setAccessibleName("btnSearch");
+
         getAccessibleContext().setAccessibleName("View_report");
 
         pack();
@@ -129,6 +149,18 @@ public class View_report extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_btnHome
+
+    private void cbEndDate(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEndDate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbEndDate
+
+    private void cbStartDate(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStartDate
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbStartDate
+
+    private void btnSearch(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearch
 
     
     public static void main(String args[]) {
