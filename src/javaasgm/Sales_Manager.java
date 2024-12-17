@@ -131,7 +131,7 @@ public class Sales_Manager extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalesEntryActionPerformed
 
     private void btnRequistionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequistionActionPerformed
-        Create_Requisition createRequisitionFrame = new Create_Requisition();
+        CreateRequisition createRequisitionFrame = new CreateRequisition();
         createRequisitionFrame.setVisible(true);
         
         this.dispose();
