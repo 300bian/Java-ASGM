@@ -1,3 +1,5 @@
+package Inventory_Manager;
+
 import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -112,6 +114,7 @@ public class ItemFrame extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Item ");
@@ -214,6 +217,13 @@ public class ItemFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Search:");
 
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,6 +259,9 @@ public class ItemFrame extends javax.swing.JFrame {
                                 .addComponent(lblStockAmount))
                             .addComponent(txtAmountedit)
                             .addComponent(txtItemID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,6 +281,8 @@ public class ItemFrame extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(18, 18, 18)
                         .addComponent(lblItemID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtItemID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -484,6 +499,12 @@ public class ItemFrame extends javax.swing.JFrame {
         obj1.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
     }//GEN-LAST:event_txtSearchKeyReleased
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        InventoryFrame inventoryFrame = new InventoryFrame();
+        inventoryFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -520,6 +541,7 @@ public class ItemFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> combboxSupplierName;
     private javax.swing.JLabel jLabel1;
