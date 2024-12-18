@@ -223,7 +223,7 @@ public class UserPageFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_registerButtonActionPerformed
 private void saveDataToFile() {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter("user_data.txt"))) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("users_data.txt"))) {
        
         for (int i = 0; i < model.getColumnCount(); i++) {
             writer.write(model.getColumnName(i));
