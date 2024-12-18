@@ -54,7 +54,7 @@ public class ViewReport02 extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Sale_id", "Item_code", "Sale_Quantity", "Sale_date", "Sale_Management", "Sale_value", "Stock_level"
+                "Sale_id", "Item_code", "Sale_Quantity", "Sale_date", "Sale_Manager_id", "Sale_value", "Stock_level"
             }
         ));
         jScrollPane1.setViewportView(tableReport);

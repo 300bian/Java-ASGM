@@ -1,5 +1,14 @@
 package Sales_Manager;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class Sales_Entry02 extends javax.swing.JFrame {
 
     /**
@@ -23,10 +32,13 @@ public class Sales_Entry02 extends javax.swing.JFrame {
         txtItemCode = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableSalesEntry = new javax.swing.JTable();
         btnSubmit = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnDisplay = new javax.swing.JButton();
+        lblSalesQuantity = new javax.swing.JLabel();
+        txtSalesQuantity = new javax.swing.JTextField();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,8 +52,13 @@ public class Sales_Entry02 extends javax.swing.JFrame {
         jLabel1.setText("Item code:");
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableSalesEntry.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -52,13 +69,42 @@ public class Sales_Entry02 extends javax.swing.JFrame {
                 "Item_code", "Item_name", "Unit_price", "Sales_Quantity", "Sales_amount", "Stock_lvl"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TableSalesEntry.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                TableSalesEntryPropertyChange(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TableSalesEntry);
 
         btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         btnDisplay.setText("Display");
+        btnDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisplayActionPerformed(evt);
+            }
+        });
+
+        lblSalesQuantity.setText("Sales Quantity:");
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,13 +117,20 @@ public class Sales_Entry02 extends javax.swing.JFrame {
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblSalesQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtItemCode, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                            .addComponent(txtSalesQuantity))
                         .addGap(18, 18, 18)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -88,19 +141,24 @@ public class Sales_Entry02 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHome)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
                         .addComponent(txtItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSearch))
-                    .addComponent(btnHome))
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(btnSearch)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSalesQuantity)
+                    .addComponent(txtSalesQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
                     .addComponent(btnClear)
-                    .addComponent(btnDisplay))
+                    .addComponent(btnDisplay)
+                    .addComponent(btnDelete))
                 .addGap(20, 20, 20))
         );
 
@@ -114,6 +172,209 @@ public class Sales_Entry02 extends javax.swing.JFrame {
         salesManagerFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayActionPerformed
+            // Get the table model from the JTable
+        DefaultTableModel tableModel = (DefaultTableModel) TableSalesEntry.getModel();
+
+        // Clear any existing rows in the table
+        tableModel.setRowCount(0);
+
+        // Path to the SalesEntry02.txt file
+        String filePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\SalesList.txt";
+
+        // Check if the file exists to avoid FileNotFoundException
+        File file = new File(filePath);
+        if (!file.exists()) {
+            JOptionPane.showMessageDialog(this, "SalesEntry02.txt not found!", "File Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Read the file and populate the JTable
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            // Read the file line by line
+            while ((line = br.readLine()) != null) {
+                // Split each line into columns (assuming comma-separated values)
+                String[] rowData = line.split(",");
+
+                // Ensure the row has exactly 6 columns to match the table structure
+                if (rowData.length == 6) {
+                    // Add the data as a new row to the table
+                    tableModel.addRow(rowData);
+                } else {
+                    // Handle the case where the row doesn't have the correct number of columns
+                    System.out.println("Skipping invalid row: " + line);
+                }
+            }
+        } catch (IOException ex) {
+            // Show an error message if the file can't be read
+            JOptionPane.showMessageDialog(this, "Error reading file: " + ex.getMessage(),
+                    "File Read Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDisplayActionPerformed
+
+    private void TableSalesEntryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TableSalesEntryPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableSalesEntryPropertyChange
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        DefaultTableModel tableModel = (DefaultTableModel) TableSalesEntry.getModel();  
+    // Clear all rows in the table
+        tableModel.setRowCount(0);
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+            // Get the entered item code from the text field
+        String itemCode = txtItemCode.getText().trim();
+
+        if (itemCode.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter an item code to search.", "Input Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        DefaultTableModel tableModel = (DefaultTableModel) TableSalesEntry.getModel();
+        tableModel.setRowCount(0); // Clear any existing rows before adding the search results
+
+        String filePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\SalesList.txt";
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            JOptionPane.showMessageDialog(this, "SalesEntry02.txt not found!", "File Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            boolean found = false;
+
+            while ((line = br.readLine()) != null) {
+                String[] rowData = line.split(",");
+
+                // Check if the item code matches the one entered in the text field
+                if (rowData.length == 6 && rowData[0].equals(itemCode)) {
+                    tableModel.addRow(rowData);
+                    found = true;
+                }
+            }
+
+            if (!found) {
+                JOptionPane.showMessageDialog(this, "No matching item code found.", "Search Result", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error reading file: " + ex.getMessage(), "File Read Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+            // Get the selected row from the table
+       int selectedRow = TableSalesEntry.getSelectedRow();
+
+       if (selectedRow == -1) {
+           JOptionPane.showMessageDialog(this, "Please select a row to delete.", "Selection Error", JOptionPane.WARNING_MESSAGE);
+           return;
+       }
+
+       // Get the item code from the selected row (assumed to be in the first column)
+       String itemCode = (String) TableSalesEntry.getValueAt(selectedRow, 0);
+
+       // Remove the selected row from the JTable
+       DefaultTableModel tableModel = (DefaultTableModel) TableSalesEntry.getModel();
+       tableModel.removeRow(selectedRow);
+
+       // Now remove the corresponding entry from the SalesEntry02.txt file
+       String filePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\SalesList.txt";
+       File file = new File(filePath);
+
+       if (!file.exists()) {
+           JOptionPane.showMessageDialog(this, "SalesEntry02.txt not found!", "File Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+
+       File tempFile = new File("C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\SalesList_temp.txt");
+
+       try (BufferedReader br = new BufferedReader(new FileReader(file));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile))) {
+
+           String line;
+           boolean found = false;
+
+           // Read the original file and write all lines to the temp file except the deleted one
+           while ((line = br.readLine()) != null) {
+               String[] rowData = line.split(",");
+               if (rowData.length == 6 && rowData[0].equals(itemCode)) {
+                   // Skip this line (this will remove it from the file)
+                   found = true;
+               } else {
+                   // Write the line to the temporary file (preserving other entries)
+                   bw.write(line);
+                   bw.newLine();
+               }
+           }
+
+           if (!found) {
+               JOptionPane.showMessageDialog(this, "Item code not found in the file.", "Deletion Error", JOptionPane.ERROR_MESSAGE);
+           } else {
+               // Replace the original file with the temporary file
+               if (file.delete()) {
+                   if (tempFile.renameTo(file)) {
+                       JOptionPane.showMessageDialog(this, "Item deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                   } else {
+                       JOptionPane.showMessageDialog(this, "Error renaming temporary file.", "File Error", JOptionPane.ERROR_MESSAGE);
+                   }
+               } else {
+                   JOptionPane.showMessageDialog(this, "Error deleting the original file.", "File Error", JOptionPane.ERROR_MESSAGE);
+               }
+           }
+       } catch (IOException ex) {
+           JOptionPane.showMessageDialog(this, "Error reading or writing to the file: " + ex.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
+       }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+            // Get the table model
+        DefaultTableModel tableModel = (DefaultTableModel) TableSalesEntry.getModel();
+
+        // Check if the table is empty
+        if (tableModel.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "There are no sales data to submit.", "No Data", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // File to save the sales data
+        String filePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\SalesList.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            // Write header (column names)
+            writer.write("ItemCode,ItemName,UnitPrice,SalesQuantity,SalesAmount,Date");
+            writer.newLine();
+
+            // Write data from the table rows
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                String itemCode = (String) tableModel.getValueAt(i, 0);
+                String itemName = (String) tableModel.getValueAt(i, 1);
+                String unitPrice = (String) tableModel.getValueAt(i, 2);
+                String salesQuantity = (String) tableModel.getValueAt(i, 3);
+                String salesAmount = (String) tableModel.getValueAt(i, 4);
+                String date = (String) tableModel.getValueAt(i, 5);
+
+                // Combine row data into a CSV format
+                String rowData = itemCode + "," + itemName + "," + unitPrice + "," + salesQuantity + "," + salesAmount + "," + date;
+
+                // Write the row data to the file
+                writer.write(rowData);
+                writer.newLine();
+            }
+
+            // Show confirmation message
+            JOptionPane.showMessageDialog(this, "Sales data submitted successfully.", "Submission Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException ex) {
+            // Handle any IO errors
+            JOptionPane.showMessageDialog(this, "Error saving sales data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,14 +413,17 @@ public class Sales_Entry02 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableSalesEntry;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDisplay;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblSalesQuantity;
     private javax.swing.JTextField txtItemCode;
+    private javax.swing.JTextField txtSalesQuantity;
     // End of variables declaration//GEN-END:variables
 }

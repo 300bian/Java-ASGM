@@ -149,7 +149,7 @@
                 <Column editable="true" title="Item_code" type="java.lang.Object"/>
                 <Column editable="true" title="Sale_Quantity" type="java.lang.Object"/>
                 <Column editable="true" title="Sale_date" type="java.lang.Object"/>
-                <Column editable="true" title="Sale_Management" type="java.lang.Object"/>
+                <Column editable="true" title="Sale_Manager_id" type="java.lang.Object"/>
                 <Column editable="true" title="Sale_value" type="java.lang.Object"/>
                 <Column editable="true" title="Stock_level" type="java.lang.Object"/>
               </Table>
