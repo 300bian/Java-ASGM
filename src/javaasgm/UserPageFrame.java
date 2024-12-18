@@ -284,7 +284,7 @@ private void loadDataFromFile() {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         if(row == -1){
-            JOptionPane.showMessageDialog(this,"Please select a row to delete");
+            JOptionPane.showMessageDialog(this,"Please select the row to delete");
             
         }
         else{
