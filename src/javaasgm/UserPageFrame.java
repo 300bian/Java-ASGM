@@ -223,7 +223,7 @@ public class UserPageFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_registerButtonActionPerformed
 private void saveDataToFile() {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter("user_data.txt"))) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("users_data.txt"))) {
        
         for (int i = 0; i < model.getColumnCount(); i++) {
             writer.write(model.getColumnName(i));
@@ -284,7 +284,7 @@ private void loadDataFromFile() {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         if(row == -1){
-            JOptionPane.showMessageDialog(this,"Please select a row to delete");
+            JOptionPane.showMessageDialog(this,"Please select the row to delete");
             
         }
         else{
