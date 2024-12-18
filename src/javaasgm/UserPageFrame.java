@@ -250,7 +250,7 @@ private void saveDataToFile() {
 }
 
 private void loadDataFromFile() {
-    try (BufferedReader reader = new BufferedReader(new FileReader("user_data.txt"))) {
+    try (BufferedReader reader = new BufferedReader(new FileReader("users_data.txt"))) {
         String line;
         model.setRowCount(0); 
 

@@ -116,7 +116,7 @@ public class LoginPage extends javax.swing.JFrame {
         boolean loginSuccess = false;
         String role = "";
 
-        try (BufferedReader br = new BufferedReader(new FileReader("user_data.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("users_data.txt"))) {
         String line;
         while ((line = br.readLine()) != null) {
             String[] credentials = line.split(",");
