@@ -144,8 +144,12 @@ public class LoginPage extends javax.swing.JFrame {
         AdminDashboardFrame adminDashboard = new AdminDashboardFrame();
         adminDashboard.setVisible(true);
         this.dispose(); // Close the Login Page
+    } else if (role.equalsIgnoreCase("IM")) {
+        InventoryFrame inventoryFrame = new InventoryFrame();
+        inventoryFrame.setVisible(true);
+        this.dispose(); // Close the Login Page
     } else {
-        JOptionPane.showMessageDialog(null, "Access Denied: You are not an Admin (AM).", 
+        JOptionPane.showMessageDialog(null, "Access Denied: You do not have access.", 
                                       "Access Denied", JOptionPane.ERROR_MESSAGE);
     }
 } else {
@@ -153,6 +157,7 @@ public class LoginPage extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(null, "Wrong username or password!", 
                                   "Error", JOptionPane.ERROR_MESSAGE);
 }
+
      
         
     }//GEN-LAST:event_loginButtonActionPerformed
