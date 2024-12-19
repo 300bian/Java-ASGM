@@ -1,0 +1,6 @@
+PO001,R04,I002,Headphones,10,1399.0,13990.0,S001,Approved,Pending,Unpaid
+PO002,R06,I002,Headphones,30,1399.0,41970.0,S001,Approved,Pending,Unpaid
+PO003,R02,I002,Headphones,20,1399.0,27980.0,S001,Approved,Pending,Unpaid
+PO004,R10,I003,Mouse,25,249.0,6225.0,S002,Approved,Pending,Unpaid
+PO005,R12,I003,Mouse,80,249.0,19920.0,S002,Approved,Pending,Unpaid
+PO006,R14,I006,USB Cable,90,25.0,2250.0,S003,Approved,Pending,Unpaid
