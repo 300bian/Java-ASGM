@@ -139,21 +139,23 @@ public class LoginPage extends javax.swing.JFrame {
        if (loginSuccess) {
     JOptionPane.showMessageDialog(null, "Login Successful");
 
-    // Check the user's role only after a successful login
     if (role.equalsIgnoreCase("AM")) {
         AdminDashboardFrame adminDashboard = new AdminDashboardFrame();
         adminDashboard.setVisible(true);
-        this.dispose(); // Close the Login Page
+        this.dispose(); 
     } else if (role.equalsIgnoreCase("IM")) {
         InventoryFrame inventoryFrame = new InventoryFrame();
         inventoryFrame.setVisible(true);
-        this.dispose(); // Close the Login Page
+        this.dispose(); 
+    } else if(role.equalsIgnoreCase("PM")) {
+        purchase_order_main_page pmoPage = new purchase_order_main_page();
+        pmoPage.setVisible(true);
+        this.dispose();
     } else {
         JOptionPane.showMessageDialog(null, "Access Denied: You do not have access.", 
                                       "Access Denied", JOptionPane.ERROR_MESSAGE);
     }
 } else {
-    // Show wrong credentials message if login failed
     JOptionPane.showMessageDialog(null, "Wrong username or password!", 
                                   "Error", JOptionPane.ERROR_MESSAGE);
 }
