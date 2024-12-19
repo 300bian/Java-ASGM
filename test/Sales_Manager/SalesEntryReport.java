@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -200,6 +201,10 @@ public class SalesEntryReport extends javax.swing.JFrame {
 
             // Loop through the rows and filter based on the stock level
             for (String[] row : rows) {
+                if(row.length < 6){
+                    System.out.println("Invalid row:" + Arrays.toString(row));
+                    continue;
+                }
                 // Assuming that the stock level is in the 6th column (index 5)
                 String stockLevel = row[5].trim(); // Trim any leading/trailing spaces
 
@@ -222,29 +227,27 @@ public class SalesEntryReport extends javax.swing.JFrame {
                 // If the selected stock level is "Pending Restock", add "Pending Restock" rows
                 else if ("Pending Restock".equalsIgnoreCase(selectedStock) && "Pending Restock".equalsIgnoreCase(stockLevel)) {
                     tableModel.addRow(row);
-                }
-            }
-  
+                }   
+                TableSalesEntry.repaint();
+            }     
         }
-
-       
+    
     }//GEN-LAST:event_btnDisplayActionPerformed
-
-
-
-    private List<String[]> readFile(String filePath) {
-        List<String[]> rows = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] rowData = line.split(","); 
-                rows.add(rowData);
+    private List<String[]>readFile(String filePath){
+            List<String[]>rows = new ArrayList<>();
+            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    // Split the line by semicolon and trim spaces
+                    String[] values = line.split(";");
+                    rows.add(values);
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading file: " + e.getMessage());
             }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error reading file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        return rows;
+            return rows;
     }
+   
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         Sales_Entry02 salesEntry02Frame = new Sales_Entry02();
         salesEntry02Frame.setVisible(true);
@@ -296,7 +299,7 @@ public class SalesEntryReport extends javax.swing.JFrame {
     private void writeToFile(String filePath, List<String[]> rows) {
     try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
         for (String[] row : rows) {
-            String line = String.join("\t", row);  // Join the values with tabs
+            String line = String.join(";", row);  // Join the values with tabs
             bw.write(line);
             bw.newLine();
         }
