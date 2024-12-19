@@ -209,7 +209,7 @@ public class CreateRequisition02 extends javax.swing.JFrame {
             return;
         }
         
-        try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\src\\Sales_Manager\\Requisition01.txt", true))) {
+        try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\Requisition02.txt", true))) {
             writer.write(itemCode + "," + quantity + "," + dateNeeded);
             writer.newLine();
             javax.swing.JOptionPane.showMessageDialog(this, "Requisition created successfully!");

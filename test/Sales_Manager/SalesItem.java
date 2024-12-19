@@ -16,11 +16,12 @@ public class SalesItem {
     private String salesID;
     private String salesDate;
     private String salesManagerid;
+    private String Stock;
 
     // Constructor
     public SalesItem(String itemCode, String itemName, String itemQuantity, String salesQuantity,
                      String salesAmount, String unitPrice, String salesID, String salesDate,
-                     String salesManagerid) {
+                     String salesManagerid,String Stock) {
         this.itemCode = itemCode;
         this.itemName = itemName;
         this.itemQuantity = itemQuantity;
@@ -30,6 +31,7 @@ public class SalesItem {
         this.salesID = salesID;
         this.salesDate = salesDate;
         this.salesManagerid = salesManagerid;
+        this.Stock = Stock;
     }
  
     // Getters and setters
@@ -95,6 +97,14 @@ public class SalesItem {
     public void setSalesManagerid(String salesManagerid) { 
         this.salesManagerid = salesManagerid;
     }
+    
+    public String getStock(){
+        return Stock;
+    }
+    
+    public void setStock(String Stock){
+        this.Stock = Stock;
+    }
 
     @Override
     public String toString() {
@@ -108,6 +118,7 @@ public class SalesItem {
                 ", salesID='" + salesID + '\'' +
                 ", salesDate='" + salesDate + '\'' +
                 ", salesManagerid='" + salesManagerid + '\'' +
+                ", Stock='"+Stock + '\'' +
                 '}';
     }
 
@@ -128,10 +139,11 @@ public class SalesItem {
                     String salesID = fields[6];
                     String salesDate = fields[7];
                     String salesManagerid = fields[8];
+                    String Stock = fields[9];
 
                     // Add item to the list
                     items.add(new SalesItem(itemCode, itemName, itemQuantity, salesQuantity,
-                            salesAmount, unitPrice, salesID, salesDate, salesManagerid));
+                            salesAmount, unitPrice, salesID, salesDate, salesManagerid,Stock));
                 } else {
                     System.out.println("Invalid line format: " + line);
                 }

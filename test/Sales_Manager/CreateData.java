@@ -11,7 +11,7 @@ public class CreateData {
         int numberOfRows = 100; // Number of rows to generate
 
         // Column names
-        String[] columnNames = {"item code", "item name", "unit price", "sales quantity", "sales amount", "stock level"};
+        String[] columnNames = {"item code", "item name", "unit price", "sales quantity", "sales amount","Item Quantity", "stock level"};
         
         // Stock levels
         String[] stockLevels = {"Low Stock", "Out of Stock", "Reserved", "Pending Restock"};
@@ -32,6 +32,7 @@ public class CreateData {
                 int salesQuantity = random.nextInt(50) + 1; // Quantity between 1 and 50
                 double salesAmount = Math.round(unitPrice * salesQuantity * 100.0) / 100.0; // Amount = unit_price * sales_quantity
                 String stockLevel = stockLevels[random.nextInt(stockLevels.length)]; // Randomly select stock level
+                int ItemQuantity = random.nextInt(50)+1;
 
                 // Combine the values into a semicolon-separated row
                 String row = String.join(";",
@@ -40,6 +41,7 @@ public class CreateData {
                         String.format("%.2f", unitPrice),
                         String.valueOf(salesQuantity),
                         String.format("%.2f", salesAmount),
+                        String.valueOf(ItemQuantity),
                         stockLevel);
 
                 // Write the row to the file

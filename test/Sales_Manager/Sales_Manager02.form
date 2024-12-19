@@ -5,7 +5,7 @@
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <AccessibilityProperties>
-    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Sales_Manager01"/>
+    <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Sales_Manager02"/>
   </AccessibilityProperties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>

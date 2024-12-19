@@ -106,7 +106,7 @@ public class Sales_Manager02 extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        getAccessibleContext().setAccessibleName("Sales_Manager01");
+        getAccessibleContext().setAccessibleName("Sales_Manager02");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -124,7 +124,7 @@ public class Sales_Manager02 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnSalesEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalesEntryActionPerformed
-        Sales_Entry02 salesEntryFrame = new Sales_Entry02();
+        Sales_Entry03 salesEntryFrame = new Sales_Entry03();
         salesEntryFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalesEntryActionPerformed
