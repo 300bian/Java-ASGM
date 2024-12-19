@@ -271,7 +271,7 @@ public class Sales_Entry02 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDisplayActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        txtItemCode.setText("");
+        //CbItemCode.setSelectedItemCode("");
         txtItemName.setText("");
         txtItemQuantity.setText("");
         txtSalesQuantity.setText("");
@@ -281,7 +281,7 @@ public class Sales_Entry02 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-          String itemCode = txtItemCode.getText();
+          String itemCode = (String)CbItemCode.getSelectedItem();
         try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\SalesList.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -305,7 +305,7 @@ public class Sales_Entry02 extends javax.swing.JFrame {
 
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        String itemCode = txtItemCode.getText();
+        String itemCode = (String)CbItemCode.getSelectedItem();
         String itemName = txtItemName.getText();
         String itemQuantity = txtItemQuantity.getText();
         String salesQuantity = txtSalesQuantity.getText();
