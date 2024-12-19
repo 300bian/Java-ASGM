@@ -66,6 +66,11 @@ public class AdminDashboardFrame extends javax.swing.JFrame {
         });
 
         viewInventory.setText("View Inventory Management");
+        viewInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewInventoryActionPerformed(evt);
+            }
+        });
 
         viewFinance.setText("View Finance Management");
 
@@ -137,6 +142,12 @@ public class AdminDashboardFrame extends javax.swing.JFrame {
         loginPage.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void viewInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewInventoryActionPerformed
+        // TODO add your handling code here:
+        InventoryFrame inventoryframe = new InventoryFrame();
+        inventoryframe.setVisible(true);
+    }//GEN-LAST:event_viewInventoryActionPerformed
 
     /**
      * @param args the command line arguments
