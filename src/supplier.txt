@@ -1,0 +1,10 @@
+S001,Novate Solution,novate@mail.com,12300,Bukit Jalil
+S002,Tyfon Tech,Tyfon@mail.com,90844,Kuala Lumpur
+S003,ITS Office Appliances,OfficeAppliances@mail.com,45678,Ipoh
+S004,Flexevo,flexevo@mail.com,67890,Ampang
+S005,Orange Mega Store Sdn Bhd,orangemega@mail.com,34523,Klang
+S006,All IT Hypermarket,allit@mail.com,1245,Kuala Lumpur
+S007,The Knowledge Group,knowledgegroup@mail.com,45678,Cyberjaya
+S008,Asian Refrigeration Sales & Service Sdn Bhd,asianrefrigeration@mail.com,56784,Kuala Lumpur
+S009,Jun Seng Trading & Iron Works,JunSeng@mail.com,34789,Subang Jaya
+S010,Sweet Home BM Enterprise,sweethome@mail.com,79077,Petaling Jaya
