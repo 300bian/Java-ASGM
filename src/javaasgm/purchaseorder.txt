@@ -1,0 +1,3 @@
+PO001,R01,I001,Laptop,10,2599,25990,S001,Approved,Pending,Unpaid
+PO002,R02,I002,Headphones,20,1399,27980,S001,Approved,Pending,Unpaid
+PO003,R06,I002,Headphones,30,1399,41970,S001,Approved,Pending,Unpaid
