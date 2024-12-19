@@ -28,8 +28,8 @@ public class Sales_Entry02 extends javax.swing.JFrame {
         txtItemName.setEditable(false);
         txtItemName.setFocusable(false);
     
-        txtItemQuantity.setEditable(false);
-        txtItemQuantity.setFocusable(false);
+        txtSalesQuantity.setEditable(false);
+        txtSalesQuantity.setFocusable(false);
     
         txtSalesAmount.setEditable(false);
         txtSalesAmount.setFocusable(false);
@@ -39,11 +39,11 @@ public class Sales_Entry02 extends javax.swing.JFrame {
 
         // Allow these fields to remain editable
         txtItemCode.setEditable(true);
-        txtSalesQuantity.setEditable(true);
+        txtItemQuantity.setEditable(true);
 
         // Optional tooltips
         txtItemName.setToolTipText("This field is read-only.");
-        txtItemQuantity.setToolTipText("This field is read-only.");
+        txtSalesQuantity.setToolTipText("This field is read-only.");
 
         }
     
@@ -55,7 +55,6 @@ public class Sales_Entry02 extends javax.swing.JFrame {
 
         btnHome = new javax.swing.JButton();
         lblItemCode = new javax.swing.JLabel();
-        txtItemCode = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
@@ -72,6 +71,7 @@ public class Sales_Entry02 extends javax.swing.JFrame {
         txtSalesQuantity = new javax.swing.JTextField();
         txtSalesAmount = new javax.swing.JTextField();
         txtUnitPrice = new javax.swing.JTextField();
+        CbItemCode = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,6 +143,13 @@ public class Sales_Entry02 extends javax.swing.JFrame {
             }
         });
 
+        CbItemCode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
+        CbItemCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CbItemCodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,10 +188,13 @@ public class Sales_Entry02 extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lblItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblItemName, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtItemCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(CbItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lblSalesQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,9 +215,9 @@ public class Sales_Entry02 extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblItemCode)
-                            .addComponent(txtItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSearch)
-                            .addComponent(btnHome)))
+                            .addComponent(btnHome)
+                            .addComponent(CbItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -278,11 +288,10 @@ public class Sales_Entry02 extends javax.swing.JFrame {
                 String[] parts = line.split(",");
                 if (parts[0].equals(itemCode)) {
                     txtItemName.setText(parts[1]);
-                    txtItemQuantity.setText(parts[2]);
-                    txtSalesQuantity.setText(parts[3]);
-                    txtSalesAmount.setText(parts[4]);
-                    txtUnitPrice.setText(parts[5]);
-                    CbStatus.setSelectedItem(parts[6]);
+                    txtSalesQuantity.setText(parts[2]);
+                    txtSalesAmount.setText(parts[3]);
+                    txtUnitPrice.setText(parts[4]);
+                    CbStatus.setSelectedItem(parts[5]);
                     return;
                 }
             }
@@ -328,6 +337,10 @@ public class Sales_Entry02 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalesQuantityActionPerformed
 
+    private void CbItemCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbItemCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CbItemCodeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -365,6 +378,7 @@ public class Sales_Entry02 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CbItemCode;
     private javax.swing.JComboBox<String> CbStatus;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDisplay;
@@ -378,7 +392,6 @@ public class Sales_Entry02 extends javax.swing.JFrame {
     private javax.swing.JLabel lblSalesQuantity;
     private javax.swing.JLabel lblStock;
     private javax.swing.JLabel lblUnitPrice;
-    private javax.swing.JTextField txtItemCode;
     private javax.swing.JTextField txtItemName;
     private javax.swing.JTextField txtItemQuantity;
     private javax.swing.JTextField txtSalesAmount;
