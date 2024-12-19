@@ -1,9 +1,28 @@
-001,Pen,1.00,50,50.00,200
-002,Pencil,0.50,100,50.00,300
-004,Notebook,1.50,30,45.00,150
-005,Ruler,0.75,75,56.25,120
-101,Apple,2.50,10,25.00,100
-102,Banana,1.20,15,18.00,150
-103,Orange,1.80,8,14.40,120
-104,Grapes,3.00,5,15.00,80
-105,Mango,2.20,12,26.40,90
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock
+A123	2024-01-15	Manager A	Item A	100	10	200.0	20.0	In Stock
+B456	2024-02-10	Manager B	Item B	50	5	100.0	20.0	Low Stock

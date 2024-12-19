@@ -32,7 +32,7 @@ public class CreateRequisition02 extends javax.swing.JFrame {
         lblRequisitionID = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         CbStatus = new javax.swing.JComboBox<>();
-        CbItemName = new javax.swing.JComboBox<>();
+        txtItemName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,12 +75,9 @@ public class CreateRequisition02 extends javax.swing.JFrame {
             }
         });
 
-        CbItemName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CbItemName.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                CbItemNameInputMethodTextChanged(evt);
+        txtItemName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtItemNameActionPerformed(evt);
             }
         });
 
@@ -115,13 +112,12 @@ public class CreateRequisition02 extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtRequisitionID, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                                .addComponent(CbItemName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtItemName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtItemCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(txtRequisitionID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
                         .addGap(98, 98, 98)
                         .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(75, Short.MAX_VALUE))))
@@ -131,17 +127,17 @@ public class CreateRequisition02 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblRequisitionID)
                             .addComponent(txtRequisitionID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(btnHome)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(CbItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtItemName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblItemCode)
@@ -226,10 +222,6 @@ public class CreateRequisition02 extends javax.swing.JFrame {
         }     
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void CbItemNameInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_CbItemNameInputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CbItemNameInputMethodTextChanged
-
     
     private void CbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbStatusActionPerformed
         String selectedStatus = (String)CbStatus.getSelectedItem();
@@ -237,6 +229,10 @@ public class CreateRequisition02 extends javax.swing.JFrame {
             System.out.println("User selected:"+ selectedStatus);
         }
     }//GEN-LAST:event_CbStatusActionPerformed
+
+    private void txtItemNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtItemNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,7 +273,6 @@ public class CreateRequisition02 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CbItemName;
     private javax.swing.JComboBox<String> CbStatus;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnHome;
@@ -289,6 +284,7 @@ public class CreateRequisition02 extends javax.swing.JFrame {
     private javax.swing.JLabel lblRequisitionID;
     private javax.swing.JTextField txtDateNeeded;
     private javax.swing.JTextField txtItemCode;
+    private javax.swing.JTextField txtItemName;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtRequisitionID;
     // End of variables declaration//GEN-END:variables
