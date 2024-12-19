@@ -158,6 +158,9 @@
     <Component class="javax.swing.JTextField" name="txtUnitPrice">
     </Component>
     <Component class="javax.swing.JTextField" name="txtSalesQuantity">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSalesQuantityKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSalesAmount">
       <Events>
@@ -186,6 +189,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Submit"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnClear">
       <Properties>

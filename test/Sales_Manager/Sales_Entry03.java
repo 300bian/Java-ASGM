@@ -6,6 +6,13 @@ public class Sales_Entry03 extends javax.swing.JFrame {
    
     public Sales_Entry03() {
         initComponents();
+        txtSalesQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            txtSalesQuantityKeyReleased(evt);
+        }
+    });
+
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -46,6 +53,12 @@ public class Sales_Entry03 extends javax.swing.JFrame {
 
         jLabel6.setText("Item Quantity:");
 
+        txtSalesQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSalesQuantityKeyReleased(evt);
+            }
+        });
+
         txtSalesAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSalesAmountActionPerformed(evt);
@@ -67,6 +80,11 @@ public class Sales_Entry03 extends javax.swing.JFrame {
         });
 
         btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -231,6 +249,100 @@ public class Sales_Entry03 extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Error reading SalesList.txt file: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }    
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+                                          
+        String itemCode = txtItemCode.getText().trim();
+        String itemName = txtItemName.getText().trim();
+        String unitPrice = txtUnitPrice.getText().trim();
+        String salesQuantity = txtSalesQuantity.getText().trim();
+        String salesAmount = txtSalesAmount.getText().trim();
+        String itemQuantity = txtItemQuantity.getText().trim();
+        String stockStatus = CbStock.getSelectedItem().toString();
+
+        // Validate input fields
+        if (itemCode.isEmpty() || itemName.isEmpty() || unitPrice.isEmpty() || salesQuantity.isEmpty() ||
+            salesAmount.isEmpty() || itemQuantity.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please fill all fields.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            // Read the file and update or add the record
+            java.io.File file = new java.io.File("C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\SalesList.txt");
+            java.util.ArrayList<String> lines = new java.util.ArrayList<>();
+            boolean updated = false;
+
+            if (file.exists()) {
+                java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader(file));
+                String line;
+
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(";");
+                    if (parts[0].equals(itemCode)) { // If itemCode matches, update the record
+                        line = itemCode + ";" + itemName + ";" + unitPrice + ";" + salesQuantity + ";" +
+                               salesAmount + ";" + itemQuantity + ";" + stockStatus;
+                        updated = true;
+                    }
+                    lines.add(line);
+                }
+
+                reader.close();
+            }
+
+            // If the record was not found, add a new line
+            if (!updated) {
+                String newLine = itemCode + ";" + itemName + ";" + unitPrice + ";" + salesQuantity + ";" +
+                                 salesAmount + ";" + itemQuantity + ";" + stockStatus;
+                lines.add(newLine);
+            }
+
+            // Write the updated or new content back to the file
+            java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter(file));
+            for (String l : lines) {
+                writer.write(l);
+                writer.newLine();
+            }
+            writer.close();
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Submitted successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (java.io.IOException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error writing to the file: " + e.getMessage(), "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }  
+
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtSalesQuantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalesQuantityKeyReleased
+
+        try {
+            // Get the values from the fields
+            double unitPrice = Double.parseDouble(txtUnitPrice.getText().trim());
+            int salesQuantity = Integer.parseInt(txtSalesQuantity.getText().trim());
+            int itemQuantity = Integer.parseInt(txtItemQuantity.getText().trim());
+
+            // Calculate sales amount
+            double salesAmount = unitPrice * salesQuantity;
+
+            // Update the sales amount field
+            txtSalesAmount.setText(String.valueOf(salesAmount));
+
+            // Calculate remaining item quantity
+            int remainingQuantity = itemQuantity - salesQuantity;
+
+            // Update the item quantity field
+            txtItemQuantity.setText(String.valueOf(remainingQuantity));
+
+            // Optional: Warn if the item quantity goes below zero
+            if (remainingQuantity < 0) {
+                javax.swing.JOptionPane.showMessageDialog(this, 
+                    "Warning: Sales quantity exceeds available stock!", 
+                    "Stock Warning", javax.swing.JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+           
+        }
+    }//GEN-LAST:event_txtSalesQuantityKeyReleased
 
     /**
      * @param args the command line arguments

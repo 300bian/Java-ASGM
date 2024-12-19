@@ -1,10 +1,13 @@
 package Sales_Manager;
 
 public class CreateRequisition02 extends javax.swing.JFrame {
+    
+    private static int requisitionCounter = 1; // Static counter for auto-generation
 
     public CreateRequisition02() {
         initComponents();
         setupCbStatus();
+        generateRequisitionID();
         
     }
     
@@ -14,6 +17,11 @@ public class CreateRequisition02 extends javax.swing.JFrame {
         CbStatus.addItem("Reserved");
         CbStatus.addItem("Pending Restock");
         CbStatus.addItem("All");
+    }
+    
+    private void generateRequisitionID() {
+        String requisitionID = "REQ" + String.format("%05d", requisitionCounter++);
+        txtRequisitionID.setText(requisitionID);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -181,12 +189,14 @@ public class CreateRequisition02 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        String RequisitionID = txtRequisitionID.getText().trim();
+        String itemName = txtItemName.getText().trim();
         String itemCode = txtItemCode.getText().trim();
         String quantity = txtQuantity.getText().trim();
         String dateNeeded = txtDateNeeded.getText().trim();
         
         // Validate that none of the fields are empty
-        if (itemCode.isEmpty() || quantity.isEmpty() || dateNeeded.isEmpty()) {
+        if (itemName.isEmpty()|| itemCode.isEmpty() || quantity.isEmpty() || dateNeeded.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "All fields are required!");
             return;
         }
@@ -210,13 +220,15 @@ public class CreateRequisition02 extends javax.swing.JFrame {
         }
         
         try (java.io.BufferedWriter writer = new java.io.BufferedWriter(new java.io.FileWriter("C:\\Users\\user\\Documents\\NetBeansProjects\\Java-ASGM\\test\\Sales_Manager\\Requisition02.txt", true))) {
-            writer.write(itemCode + "," + quantity + "," + dateNeeded);
+            writer.write(itemName + "," + itemCode + "," + quantity + "," + dateNeeded);
             writer.newLine();
             javax.swing.JOptionPane.showMessageDialog(this, "Requisition created successfully!");
             // Clear the text fields after successful save
+            txtItemName.setText("");
             txtItemCode.setText("");
             txtQuantity.setText("");
             txtDateNeeded.setText("");
+            generateRequisitionID();
         } catch (java.io.IOException ex) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error saving requisition: " + ex.getMessage());
         }     
