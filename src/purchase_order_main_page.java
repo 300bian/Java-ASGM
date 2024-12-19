@@ -14,6 +14,7 @@ public class purchase_order_main_page extends javax.swing.JFrame {
      */
     public purchase_order_main_page() {
         initComponents();
+        // notthing
     }
 
     /**
