@@ -1,0 +1,6 @@
+Sale_id,Sale_date,Sale_Manager,Item_code,Sale_Quantity,Unit_Price,Sale_Amount,Stock_level
+S001,2024-01-10,Manager1,A123,10,20.0,200.0,In Stock
+S002,2024-02-15,Manager2,B456,5,15.0,75.0,Low Stock
+S001,2024-01-10,Manager1,A123,10,20.0,200.0,In Stock
+S002,2024-02-15,Manager2,B456,5,15.0,75.0,Low Stock
+S003,2024-01-20,Manager3,C789,8,25.0,200.0,Out of Stock
