@@ -344,6 +344,11 @@ public class createpurchaseorder extends javax.swing.JFrame {
         BTback_PO.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BTback_PO.setForeground(new java.awt.Color(0, 0, 0));
         BTback_PO.setText("Back");
+        BTback_PO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTback_POActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -508,6 +513,12 @@ public class createpurchaseorder extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_BTsave_POActionPerformed
+
+    private void BTback_POActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTback_POActionPerformed
+        this.dispose();
+        manage__purchaseorder mpopage = new manage__purchaseorder();
+        mpopage.setVisible(true);
+    }//GEN-LAST:event_BTback_POActionPerformed
 
     /**
      * @param args the command line arguments
